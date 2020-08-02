@@ -109,7 +109,8 @@ func readExpect(path string) (string, error) {
 
 	expect := string(bytes)
 
-	strings.TrimRight(expect, "\n")
+	expect = strings.Trim(expect, "\n")
+	expect = strings.Trim(expect, "\r")
 	return expect, nil
 }
 
