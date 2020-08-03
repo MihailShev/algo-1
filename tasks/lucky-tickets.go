@@ -2,7 +2,6 @@ package tasks
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 )
 
@@ -29,6 +28,7 @@ func calc(n int) string {
 
 	for i := 2; i <= n; i++ {
 		target = make([]int, n*9+1)
+
 		for j := 0; j < len(target); j++ {
 			sum := 0
 
@@ -38,18 +38,16 @@ func calc(n int) string {
 					sum += prev[index]
 				}
 			}
-
 			target[j] = sum
 		}
-
 		prev = target
 	}
 
-	count := float64(0)
+	count := 0
 
 	for _, v := range target {
-		count += math.Pow(float64(v), float64(2))
+		count += v * v
 	}
 
-	return fmt.Sprintf("%.0f", count)
+	return fmt.Sprintf("%d", count)
 }
